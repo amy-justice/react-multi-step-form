@@ -37,7 +37,12 @@ export class UserForm extends Component {
 
     // handle fields change
     handleChange = input => e => {
+        console.log(input);
         this.setState({[input]: e.target.value});
+    }
+
+    checkboxTerms = input => e => {
+        this.setState({[input]: e.target.checked})
     }
 
     render() {
@@ -52,6 +57,7 @@ export class UserForm extends Component {
                     <FormTerms 
                         nextStep = {this.nextStep}
                         handleChange = {this.handleChange}
+                        checkboxTerms = {this.checkboxTerms}
                         values = {values}
                     />
                 )
