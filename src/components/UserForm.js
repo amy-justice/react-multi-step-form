@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import FormTerms from './FormTerms'
+import OptionsPage from './OptionsPage'
+import FormReg from './FormReg';
 
 export class UserForm extends Component {
     state = {
-        step: 1,
+        step: 0,
         terms: false,
-        carRego: '',
+        carMake: '',
+        carModel: '',
+        carYear: '',
+        carShape: '',
+        carEngine: '',
         license: {
             firstName: '',
             lastName: '',
@@ -37,8 +43,8 @@ export class UserForm extends Component {
 
     // handle fields change
     handleChange = input => e => {
-        console.log(input);
         this.setState({[input]: e.target.value});
+        console.log(this.state);
     }
 
     checkboxTerms = input => e => {
@@ -47,15 +53,22 @@ export class UserForm extends Component {
 
     render() {
         const { step } = this.state;
-        const { terms, carRego, license, otherDrivers, address, parkLocation, carKms, carHistory, existingCustomer } = this.state;
+        const { terms, carMake, carModel, carYear, carShape, carEngine, license, otherDrivers, address, parkLocation, carKms, carHistory, existingCustomer } = this.state;
 
-        const values = { terms, carRego, license, otherDrivers, address, parkLocation, carKms, carHistory, existingCustomer }
+        const values = { terms, carMake, carModel, carYear, carShape, carEngine, license, otherDrivers, address, parkLocation, carKms, carHistory, existingCustomer }
 
         switch(step) {
+            case 0:
+                return (
+                    <OptionsPage
+                    nextStep = {this.nextStep}
+                    />
+                )
             case 1:
                 return (
                     <FormTerms 
                         nextStep = {this.nextStep}
+                        prevStep = {this.prevStep}
                         handleChange = {this.handleChange}
                         checkboxTerms = {this.checkboxTerms}
                         values = {values}
@@ -63,7 +76,12 @@ export class UserForm extends Component {
                 )
             case 2:
                 return (
-                    <h1>FormCarRego</h1>
+                    <FormReg 
+                        nextStep = {this.nextStep}
+                        prevStep= {this.prevStep}
+                        handleChange = {this.handleChange}
+                        values = {values}
+                    />
                 )
             case 3:
                 return (
