@@ -2,17 +2,12 @@ import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox';
-import RaisedButton from 'material-ui/RaisedButton'
 
 export class FormReg extends Component {
     continue = e => {
         e.preventDefault();
         
-        // this.props.nextStep();
-        console.log('next page')
+        this.props.nextStep();
     }
 
     previous = e => {
@@ -26,8 +21,9 @@ export class FormReg extends Component {
         return (
             <MuiThemeProvider>
                 <div style={{ background: '#f3f3f3', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                    <AppBar title = "Get a quote" />
-                    <h2 style={{ color: '#00568b' }}>Please tell us your cars make, model and year</h2>
+                    <AppBar title = "Get a quote" style={{ backgroundColor: '#007fc1' }} />
+                    <h2 style={{ color: '#007fc1', marginTop: '50px' }}>Please tell us about your car</h2>
+                    <div style={{width: 500}}>
                     <TextField 
                         hintText='e.g Toyota'
                         floatingLabelText='Make'
@@ -59,7 +55,22 @@ export class FormReg extends Component {
                         defaultValue = {values.carEngine}
                     />
 
-                    {/* <div style={{ display: 'flex', alignItems: 'center', textAlign:'center'}}> */}
+                    <div>
+                    <button 
+                        label = "Go back"
+                        primary = {true}
+                        style= {buttonStyles}
+                        onClick = { this.previous } >
+                    Go back</button>
+
+                    <button 
+                        label = "Continue"
+                        primary = {true}
+                        style= {buttonStyles}
+                        onClick = { this.continue } >
+                    Continue</button>
+                    </div>
+                    {/* <div style={{ display: 'flex', alignItems: 'center', textAlign:'center'}}>
                             <RaisedButton 
                                 label = "Go back"
                                 primary = {true}
@@ -73,17 +84,25 @@ export class FormReg extends Component {
                                 style= {styles.button}
                                 onClick = { this.continue } >
                             </RaisedButton>
-                    {/* </div> */}
+                    </div> */}
+
+                    </div>
                 </div>
             </MuiThemeProvider>
         )
     }
 }
-
-const styles = {
-    button: {
-        margin: 15
-    }
+const buttonStyles = {
+    background: '#00568b',
+    borderRadius: '15px',
+    color: 'white',
+    padding: 15,
+    margin: 15,
+    border: 'none',
+    width: 120,
+    fontSize: '14px',
+    cursor: 'pointer',
+    marginTop: 30
 }
 
 export default FormReg
