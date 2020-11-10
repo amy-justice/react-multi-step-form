@@ -5,7 +5,13 @@ import FormReg from './FormReg';
 import FormHistory from './FormHistory'
 import FormExistingCustomer from './FormExistingCustomer'
 import FormQuote from './FormQuote'
-
+//junico's files
+import ScanningLicence from './ScanningLicence';
+import OwnerDetails from './OwnerDetails';
+import Confirm from './Confirm';
+import OtherDriver from './OtherDriver';
+import VehicleUse from './VehicleUse';
+//junico's files end here
 export class UserForm extends Component {
     state = {
         step: 0,
@@ -46,80 +52,128 @@ export class UserForm extends Component {
 
     // handle fields change
     handleChange = input => e => {
-        this.setState({[input]: e.target.value});
+        this.setState({ [input]: e.target.value });
         console.log(this.state);
     }
 
     checkboxTerms = input => e => {
-        this.setState({[input]: e.target.checked})
+        this.setState({ [input]: e.target.checked })
     }
 
     render() {
         const { step } = this.state;
-        const { terms, carMake, carModel, carYear, carShape, carEngine, license, otherDrivers, address, parkLocation, carKms, carHistory, existingCustomer } = this.state;
+        const { terms, carMake, carModel, carYear, carShape, carEngine, license, otherDrivers, address, parkLocation, carKms, carHistory, existingCustomer, firstName, lastName, dob, issueDate, expiryDate, donorIndicator, driverLicenceNumber, classesEndorsements } = this.state;
 
-        const values = { terms, carMake, carModel, carYear, carShape, carEngine, license, otherDrivers, address, parkLocation, carKms, carHistory, existingCustomer }
+        const values = { terms, carMake, carModel, carYear, carShape, carEngine, license, otherDrivers, address, parkLocation, carKms, carHistory, existingCustomer, firstName, lastName, dob, issueDate, expiryDate, donorIndicator, driverLicenceNumber, classesEndorsements }
 
-        switch(step) {
+        switch (step) {
             case 0:
                 return (
                     <OptionsPage
-                    nextStep = {this.nextStep}
+                        nextStep={this.nextStep}
                     />
                 )
             case 1:
                 return (
-                    <FormTerms 
-                        nextStep = {this.nextStep}
-                        prevStep = {this.prevStep}
-                        handleChange = {this.handleChange}
-                        checkboxTerms = {this.checkboxTerms}
-                        values = {values}
+                    <FormTerms
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        handleChange={this.handleChange}
+                        checkboxTerms={this.checkboxTerms}
+                        values={values}
                     />
                 )
             case 2:
                 return (
-                    <FormReg 
-                        nextStep = {this.nextStep}
-                        prevStep= {this.prevStep}
-                        handleChange = {this.handleChange}
-                        values = {values}
+                    <FormReg
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        handleChange={this.handleChange}
+                        values={values}
                     />
                 )
+
+
+            // junico's cases start here
             case 3:
                 return (
-                    <h1>FormLicense</h1>
-                )
+                    <ScanningLicence
+                        nextStep={this.nextStep}
+                        handleChange={this.handleChange}
+                        values={values}
+
+                    />
+                );
+
             case 4:
                 return (
-                    <h1>FormOtherDrivers</h1>
-                )
+                    <OwnerDetails
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        handleChange={this.handleChange}
+                        values={values}
+
+                    />
+                );
+
             case 5:
                 return (
-                    <h1>FormDriverUse</h1>
-                )
+                    <Confirm
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        values={values}
+
+                    />
+                );
+
             case 6:
                 return (
-                    <h1>FormAddress</h1>
-                ) 
+                    <OtherDriver
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        handleChange={this.handleChange}
+                        values={values}
+
+                    />
+                );
+
             case 7:
                 return (
-                    <h1>FormPark</h1>
-                ) 
+                    <VehicleUse
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        handleChange={this.handleChange}
+                        values={values}
+
+                    />
+                );
+
+            // junico's cases ends here
+            // josh's cases starts here
             case 8:
                 return (
-                    <h1>FormKms</h1>
-                ) 
+                    <h1>FormAddress</h1>
+                )
             case 9:
                 return (
-                    <FormHistory
-                        nextStep = {this.nextStep}
-                        prevStep = {this.prevStep}
-                        handleChange = {this.handleChange}
-                        values = {values}
-                    />
-                ) 
+                    <h1>FormPark</h1>
+                )
             case 10:
+                return (
+                    <h1>FormKms</h1>
+                )
+
+            // josh's cases ends  here    
+            case 11:
+                return (
+                    <FormHistory
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        handleChange={this.handleChange}
+                        values={values}
+                    />
+                )
+            case 12:
                 return (
                     <FormExistingCustomer
                         nextStep = {this.nextStep}
@@ -127,16 +181,16 @@ export class UserForm extends Component {
                         handleChange = {this.handleChange}
                         values = {values}
                     />
-                ) 
-            case 11:
+                )
+            case 13:
                 return (
                     <FormQuote
-                        nextStep = {this.nextStep}
-                        prevStep = {this.prevStep}
-                        handleChange = {this.handleChange}
-                        values = {values}
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        handleChange={this.handleChange}
+                        values={values}
                     />
-                ) 
+                )
             default:
                 <h1>Default</h1>
         }
