@@ -23,24 +23,23 @@ export class OptionsPage extends Component {
             <MuiThemeProvider>
                 <React.Fragment>
                     <FormMenu />
-                    <RaisedButton 
+                    <button 
                         label = "Get a quote"
-                        primary = {true}
-                        style = {styles}
+                        style = {buttonStyles}
                         onClick = { this.continue } >
-                    </RaisedButton>
-                    <RaisedButton 
+                    Get a quote</button>
+                    <button 
                         label = "Buy insurance"
                         primary = {true}
-                        style = {styles}
+                        style = {buttonStyles}
                         >
-                    </RaisedButton>
-                    <RaisedButton 
+                    Buy insurance</button>
+                    <button 
                         label = "Make a claim"
                         primary = {true}
-                        style = {styles}
+                        style = {buttonStyles2}
                         disabled >
-                    </RaisedButton>
+                    Make a claim</button>
                     <ReactImage />
                 </React.Fragment>
             </MuiThemeProvider>
@@ -48,8 +47,28 @@ export class OptionsPage extends Component {
     }
 }
 
-const styles = {
-        margin: 15
+const buttonStyles = {
+    background: '#00568b',
+    borderRadius: '15px',
+    color: 'white',
+    padding: 15,
+    margin: 15,
+    border: 'none',
+    width: 200,
+    fontSize: '14px',
+    cursor: 'pointer'
+}
+
+const buttonStyles2 = {
+    background: '#cccccc',
+    borderRadius: '15px',
+    color: '#aaaaaa',
+    padding: 15,
+    margin: 15,
+    border: 'none',
+    width: 200,
+    fontSize: '14px',
+    marginBottom: '25px'
 }
 
 
