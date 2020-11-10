@@ -7,8 +7,7 @@ export class FormReg extends Component {
     continue = e => {
         e.preventDefault();
         
-        // this.props.nextStep();
-        console.log('next page')
+        this.props.nextStep();
     }
 
     previous = e => {
