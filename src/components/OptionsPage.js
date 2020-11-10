@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-import TextField from 'material-ui/TextField';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox';
-import RaisedButton from 'material-ui/RaisedButton';
 
 import FormMenu from './FormMenu'
 
@@ -55,7 +49,7 @@ const buttonStyles = {
     margin: 15,
     border: 'none',
     width: 200,
-    fontSize: '14px',
+    fontSize: '16px',
     cursor: 'pointer'
 }
 
@@ -67,7 +61,7 @@ const buttonStyles2 = {
     margin: 15,
     border: 'none',
     width: 200,
-    fontSize: '14px',
+    fontSize: '16px',
     marginBottom: '25px'
 }
 
