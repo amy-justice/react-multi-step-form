@@ -121,7 +121,7 @@ export class UserForm extends Component {
                 ) 
             case 10:
                 return (
-                    <FormExistingCustomerh1
+                    <FormExistingCustomer
                         nextStep = {this.nextStep}
                         prevStep = {this.prevStep}
                         handleChange = {this.handleChange}
