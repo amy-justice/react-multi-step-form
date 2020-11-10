@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import FormTerms from './FormTerms'
 import OptionsPage from './OptionsPage'
 import FormReg from './FormReg';
+import FormHistory from './FormHistory'
+import FormExistingCustomer from './FormExistingCustomer'
+import FormQuote from './FormQuote'
 
 export class UserForm extends Component {
     state = {
@@ -109,15 +112,30 @@ export class UserForm extends Component {
                 ) 
             case 9:
                 return (
-                    <h1>FormHistory</h1>
+                    <FormHistory
+                        nextStep = {this.nextStep}
+                        prevStep = {this.prevStep}
+                        handleChange = {this.handleChange}
+                        values = {values}
+                    />
                 ) 
             case 10:
                 return (
-                    <h1>FormExistingCustomer</h1>
+                    <FormExistingCustomerh1
+                        nextStep = {this.nextStep}
+                        prevStep = {this.prevStep}
+                        handleChange = {this.handleChange}
+                        values = {values}
+                    />
                 ) 
             case 11:
                 return (
-                    <h1>FormQuote</h1>
+                    <FormQuote
+                        nextStep = {this.nextStep}
+                        prevStep = {this.prevStep}
+                        handleChange = {this.handleChange}
+                        values = {values}
+                    />
                 ) 
             default:
                 <h1>Default</h1>
